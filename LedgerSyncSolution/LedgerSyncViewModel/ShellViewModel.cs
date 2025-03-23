@@ -22,22 +22,11 @@ namespace LedgerSyncViewModel
         public ShellViewModel()
         {
             shellModels = new ShellModel();
-            bool isNewDatabase = !File.Exists(SQLiteDBPath);
-            if (isNewDatabase)
-            {
-                SQLiteConnection.CreateFile(SQLiteDBPath);
-                Debug.WriteLine("数据库文件不存在，已创建 LedgerSync.db！");
-     
-            }
-            if (!isNewDatabase) 
-            {
-                CreateSecretKey();
-                QuerySecretKey();
-            }
+       
+
     
 
-            tradingAccountTrade = new SpotAccountTrade(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
-            wallet = new Wallet(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
+
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
@@ -62,6 +51,21 @@ namespace LedgerSyncViewModel
         [RelayCommand]
         public async void ShellViewLoad()
         {
+            bool isNewDatabase = !File.Exists(SQLiteDBPath);
+            if (isNewDatabase)
+            {
+                //SQLiteConnection.CreateFile(SQLiteDBPath);
+                Debug.WriteLine("数据库文件不存在，已创建 LedgerSync.db！");
+                CreateSecretKey();
+            }
+            if (!isNewDatabase)
+            {
+
+                QuerySecretKey();
+            }
+
+            tradingAccountTrade = new SpotAccountTrade(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
+            wallet = new Wallet(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
         }
 
 
