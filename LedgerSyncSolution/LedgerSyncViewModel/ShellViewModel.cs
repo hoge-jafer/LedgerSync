@@ -27,9 +27,14 @@ namespace LedgerSyncViewModel
             {
                 SQLiteConnection.CreateFile(SQLiteDBPath);
                 Debug.WriteLine("数据库文件不存在，已创建 LedgerSync.db！");
-                CreateSecretKey();
+     
             }
-            QuerySecretKey();
+            if (!isNewDatabase) 
+            {
+                CreateSecretKey();
+                QuerySecretKey();
+            }
+    
 
             tradingAccountTrade = new SpotAccountTrade(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
             wallet = new Wallet(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);

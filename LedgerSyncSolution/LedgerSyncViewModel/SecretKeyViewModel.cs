@@ -32,8 +32,11 @@ namespace LedgerSyncViewModel
 
             //var results = await wallet.FundingWallet();
             //Ioc.Default.GetService<ShellViewModel>()
+            if (!string.IsNullOrEmpty(SecretKeyModels.ApiKey) && !string.IsNullOrEmpty(SecretKeyModels.ApiSecret))
+            {
+                Ioc.Default.GetService<ShellViewModel>().QuerySecretKey();
+            }
 
-            Ioc.Default.GetService<ShellViewModel>().QuerySecretKey();
         }
 
         [RelayCommand]
