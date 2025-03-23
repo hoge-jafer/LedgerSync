@@ -1,0 +1,161 @@
+﻿<Page x:Class="LedgerSync.UI.TradeDataView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LedgerSync.UI"
+      mc:Ignorable="d"
+      xmlns:viewmodel="clr-namespace:LedgerSyncViewModel;assembly=LedgerSyncViewModel"
+      xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+      d:DataContext="{d:DesignInstance Type=viewmodel:TradeDataViewModel}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      x:Name="TradeData"
+      Title="TradeDataView">
+    <behaviors:Interaction.Triggers>
+        <behaviors:EventTrigger EventName="Loaded">
+            <behaviors:InvokeCommandAction Command="{Binding TradeDataViewLoadCommand,UpdateSourceTrigger=PropertyChanged}"
+                                           PassEventArgsToCommand="True"
+                                           CommandParameter="{Binding ElementName=TradeData}"/>
+        </behaviors:EventTrigger>
+    </behaviors:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Text="币种"
+                       FontSize="24"
+                       Background="Transparent"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+            <TextBlock Grid.Column="1"
+                       Text="类型"
+                       FontSize="24"
+                       Background="Transparent"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+            <TextBlock Grid.Column="2"
+                       Text="价格"
+                       FontSize="24"
+                       Background="Transparent"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+            <TextBlock Grid.Column="3"
+                       Text="数量"
+                       FontSize="24"
+                       Background="Transparent"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+            <TextBlock Grid.Column="4"
+                       Text="时间"
+                       FontSize="24"
+                       Background="Transparent"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" />
+        </Grid>
+        <ListBox  Grid.Row="1"
+                  Background="Transparent"
+                  ItemsSource="{Binding  TradeDataModels.ObservableCollectionTradeListEntity,UpdateSourceTrigger=PropertyChanged}"
+                  HorizontalContentAlignment="Stretch"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Gray"
+                            BorderThickness="0.5"
+                            Background="Transparent">
+                        <Grid Margin="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="{Binding Symbol,UpdateSourceTrigger=PropertyChanged}"
+                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="24"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand" />
+                            <Button Grid.Column="1"
+                                    Content="{Binding IsBuyers,UpdateSourceTrigger=PropertyChanged}"
+                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="24"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand" />
+                            <Button Grid.Column="2"
+                                    Content="{Binding Price,UpdateSourceTrigger=PropertyChanged}"
+                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="24"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand" />
+                            <Button Grid.Column="3"
+                                    Content="{Binding QTY,UpdateSourceTrigger=PropertyChanged}"
+                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="24"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand" />
+                            <Button Grid.Column="4"
+                                    Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}"
+                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                                    Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                    FontSize="24"
+                                    Background="Transparent"
+                                    BorderBrush="Transparent"
+                                    BorderThickness="0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    VerticalContentAlignment="Center"
+                                    Cursor="Hand" />
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Page>

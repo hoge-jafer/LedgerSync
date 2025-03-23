@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LedgerSyncModel\LedgerSyncModel.csproj" />
+    <ProjectReference Include="..\LedgerSyncViewModel\LedgerSyncViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Binance.Common">
+      <HintPath>..\Dll\Binance.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Binance.Spot">
+      <HintPath>..\Dll\Binance.Spot.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\Dll\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop.Analyzers">
+      <HintPath>..\Dll\StyleCop.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop.Analyzers.CodeFixes">
+      <HintPath>..\Dll\StyleCop.Analyzers.CodeFixes.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
