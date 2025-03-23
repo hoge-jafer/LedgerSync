@@ -31,36 +31,67 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0"
-                       Text="币种"
-                       FontSize="24"
-                       Background="Transparent"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
-            <TextBlock Grid.Column="1"
-                       Text="类型"
-                       FontSize="24"
-                       Background="Transparent"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
-            <TextBlock Grid.Column="2"
-                       Text="价格"
-                       FontSize="24"
-                       Background="Transparent"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
-            <TextBlock Grid.Column="3"
-                       Text="数量"
-                       FontSize="24"
-                       Background="Transparent"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
-            <TextBlock Grid.Column="4"
-                       Text="时间"
-                       FontSize="24"
-                       Background="Transparent"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center" />
+            <Button Grid.Column="0"
+                    Content="币种"
+                    Style="{StaticResource  ButtonStyleNew}"
+                    FontSize="24"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand" />
+            <Button Grid.Column="1"
+                    Content="类型"
+                    Style="{StaticResource  ButtonStyleNew}"
+                    FontSize="24"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand" />
+            <Button Grid.Column="2"
+                    Content="价格"
+                    Style="{StaticResource  ButtonStyleNew}"
+                    FontSize="24"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand" />
+            <Button Grid.Column="3"
+                    Content="数量"
+                    Style="{StaticResource  ButtonStyleNew}"
+                    FontSize="24"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand" />
+            <Button Grid.Column="4"
+                    Content="时间"
+                    Style="{StaticResource  ButtonStyleNew}"
+                    FontSize="24"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand" />
+
         </Grid>
         <ListBox  Grid.Row="1"
                   Background="Transparent"
@@ -82,7 +113,6 @@
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
                                     Content="{Binding Symbol,UpdateSourceTrigger=PropertyChanged}"
-                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
                                     Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource  ButtonStyleNew}"
@@ -97,7 +127,7 @@
                                     Cursor="Hand" />
                             <Button Grid.Column="1"
                                     Content="{Binding IsBuyers,UpdateSourceTrigger=PropertyChanged}"
-                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+             
                                     Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource  ButtonStyleNew}"
@@ -112,7 +142,7 @@
                                     Cursor="Hand" />
                             <Button Grid.Column="2"
                                     Content="{Binding Price,UpdateSourceTrigger=PropertyChanged}"
-                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+             
                                     Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource  ButtonStyleNew}"
@@ -127,7 +157,7 @@
                                     Cursor="Hand" />
                             <Button Grid.Column="3"
                                     Content="{Binding QTY,UpdateSourceTrigger=PropertyChanged}"
-                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                           
                                     Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource  ButtonStyleNew}"
@@ -142,7 +172,7 @@
                                     Cursor="Hand" />
                             <Button Grid.Column="4"
                                     Content="{Binding Time,UpdateSourceTrigger=PropertyChanged}"
-                                    Foreground="{Binding MarketBrush,UpdateSourceTrigger=PropertyChanged}"
+                  
                                     Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                     CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                     Style="{StaticResource  ButtonStyleNew}"

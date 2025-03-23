@@ -102,7 +102,7 @@
                 <Button Grid.Row="0"
                         Content="密钥"
                         Command="{Binding SecretKeyCommand,UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource  ButtonStyleNew}"
+                   
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
@@ -110,7 +110,7 @@
                 <Button Grid.Row="1"
                         Content="数据"
                         Command="{Binding TradeDataCommand,UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource  ButtonStyleNew}"
+                        
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
@@ -118,7 +118,7 @@
                 <Button Grid.Row="2"
                         Content="导出"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource  ButtonStyleNew}"
+              
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"

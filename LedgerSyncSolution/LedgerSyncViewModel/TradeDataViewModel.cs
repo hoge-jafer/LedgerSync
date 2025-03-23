@@ -110,6 +110,8 @@ namespace LedgerSyncViewModel
             {
 
                 TradeListEntity tradeListEntity = new TradeListEntity();
+                tradeListEntity.TradeListID = exchangeInformationResponseModel[m].id.ToString();
+
                 tradeListEntity.Symbol = exchangeInformationResponseModel[m].symbol;
 
                 if (exchangeInformationResponseModel[m].isBuyer == true)

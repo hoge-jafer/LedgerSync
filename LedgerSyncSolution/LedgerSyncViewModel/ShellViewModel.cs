@@ -37,6 +37,20 @@ namespace LedgerSyncViewModel
     ApiKey TEXT NOT NULL, 
     ApiSecret TEXT NOT NULL);";
 
+        public string SQLiteDBCreateTradeListSQL = @"CREATE TABLE IF NOT EXISTS TradeList (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,  
+    TradeListID VARCHAR(255) NOT NULL,    
+    Symbol VARCHAR(255) NOT NULL,          
+    IsBuyers VARCHAR(255) NOT NULL,        
+    Price VARCHAR(255) NOT NULL,           
+    QTY VARCHAR(255) NOT NULL,             
+    Time VARCHAR(255) NOT NULL );";
+
+        public string SQLiteDBCreateCoinSQL = @"CREATE TABLE IF NOT EXISTS Coin (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,  
+    Free VARCHAR(255) NOT NULL,            
+    Asset VARCHAR(255) NOT NULL );";
+
         public string SQLiteDBInsertSecretKeySQL = "INSERT INTO SecretKey (ApiKey, ApiSecret) VALUES (@ApiKey, @ApiSecret);";
 
         public string query = @"
@@ -57,6 +71,8 @@ namespace LedgerSyncViewModel
                 //SQLiteConnection.CreateFile(SQLiteDBPath);
                 Debug.WriteLine("数据库文件不存在，已创建 LedgerSync.db！");
                 CreateSecretKey();
+                CreateTradeList();
+                CreateCoin();
             }
             if (!isNewDatabase)
             {
@@ -144,6 +160,46 @@ namespace LedgerSyncViewModel
             {
                 // 创建表
                 db.ExecuteNonQuery(SQLiteDBCreateSecretKeySQL);
+
+                //// 插入数据
+                //db.ExecuteNonQuery("INSERT INTO Users (Name, Age) VALUES (@name, @age);",
+                //    new Dictionary<string, object> { { "@name", "Alice" }, { "@age", 25 } });
+
+                // 查询数据
+                //var result = db.ExecuteQuery("SELECT * FROM Users;");
+                //foreach (DataRow row in result.Rows)
+                //{
+                //    Console.WriteLine($"ID: {row["Id"]}, Name: {row["Name"]}, Age: {row["Age"]}");
+                //}
+            }
+        }
+
+        public void CreateTradeList()
+        {
+            using (var db = new SQLiteHelper(Ioc.Default.GetService<ShellViewModel>().SQLiteDBPath))
+            {
+                // 创建表
+                db.ExecuteNonQuery(SQLiteDBCreateTradeListSQL);
+
+                //// 插入数据
+                //db.ExecuteNonQuery("INSERT INTO Users (Name, Age) VALUES (@name, @age);",
+                //    new Dictionary<string, object> { { "@name", "Alice" }, { "@age", 25 } });
+
+                // 查询数据
+                //var result = db.ExecuteQuery("SELECT * FROM Users;");
+                //foreach (DataRow row in result.Rows)
+                //{
+                //    Console.WriteLine($"ID: {row["Id"]}, Name: {row["Name"]}, Age: {row["Age"]}");
+                //}
+            }
+        }
+
+        public void CreateCoin()
+        {
+            using (var db = new SQLiteHelper(Ioc.Default.GetService<ShellViewModel>().SQLiteDBPath))
+            {
+                // 创建表
+                db.ExecuteNonQuery(SQLiteDBCreateCoinSQL);
 
                 //// 插入数据
                 //db.ExecuteNonQuery("INSERT INTO Users (Name, Age) VALUES (@name, @age);",
