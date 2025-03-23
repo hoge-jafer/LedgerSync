@@ -60,7 +60,6 @@ namespace LedgerSyncViewModel
             }
             if (!isNewDatabase)
             {
-
                 QuerySecretKey();
             }
 

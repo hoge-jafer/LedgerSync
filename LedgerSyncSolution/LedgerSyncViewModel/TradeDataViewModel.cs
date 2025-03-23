@@ -36,6 +36,12 @@ namespace LedgerSyncViewModel
         [RelayCommand]
         public async void TradeDataViewLoad(FrameworkElement element)
         {
+            if (Ioc.Default.GetService<ShellViewModel>().tradingAccountTrade==null)
+            {
+                return;
+
+            }
+
             ListCoinEntity.Clear();
             TradeDataModels.ObservableCollectionCoinEntity.Clear();
             // AccountInformationResponseModel getAccountInformationResponseModel = JsonConvert.DeserializeObject<AccountInformationResponseModel>(result);
