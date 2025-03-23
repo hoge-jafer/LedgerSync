@@ -24,7 +24,7 @@
     </behaviors:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.039*"/>
+            <RowDefinition Height="0.05*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
@@ -102,18 +102,24 @@
                 <Button Grid.Row="0"
                         Content="密钥"
                         Command="{Binding SecretKeyCommand,UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource  ButtonStyleNew}"
+                        FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
                 <Button Grid.Row="1"
                         Content="数据"
                         Command="{Binding TradeDataCommand,UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource  ButtonStyleNew}"
+                        FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
                 <Button Grid.Row="2"
                         Content="导出"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource  ButtonStyleNew}"
+                        FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -136,6 +142,7 @@
                                         Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                         Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                         CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource  ButtonStyleNew}"
                                         FontSize="54"
                                         Background="Transparent"
                                         BorderBrush="Transparent"

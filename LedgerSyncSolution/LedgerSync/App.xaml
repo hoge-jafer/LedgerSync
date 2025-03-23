@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:LedgerSync"
              StartupUri="/UI/ShellView.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/LedgerSync;component/Style/ButtonDictionary.xaml" />
+                <ResourceDictionary Source="/LedgerSync;component/Style/TextBoxDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

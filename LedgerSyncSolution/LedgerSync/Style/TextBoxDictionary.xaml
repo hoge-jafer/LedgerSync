@@ -1,0 +1,524 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="TextBoxNew"
+           TargetType="{x:Type TextBox}">
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Foreground"
+                Value="Gray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Rectangle RadiusX="10"
+                                   RadiusY="10"
+                                   Fill="#272a30"
+                                   Stroke="Transparent"
+                                   Opacity="0.85" />
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden"
+                                      Padding="{TemplateBinding Padding}"
+                                      Focusable="false"></ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="ApiKeyTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="Black"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="Black"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="ApiKey"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#BBB"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="SecretTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="Black"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="Black"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="Secret"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#BBB"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="PassPhraseTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="#272a30"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="#272a30"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="PassPhrase"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="DarkGray"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="RoseTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="#272a30"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="#272a30"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="Rose"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#BBB"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="FallTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="#272a30"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="#272a30"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="Fall"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="DarkGray"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="MainFundingTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="Black"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="Black"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="现货转向资金"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#BBB"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Opacity="0.6"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="TextBox"
+           x:Key="FundingMainTextBoxStyle">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="CaretBrush"
+                Value="Gray" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border"
+                            BorderBrush="Black"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="Black"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="10">
+                        <Grid>
+                            <TextBlock Text="资金转向现货"
+                                       Grid.Column="1"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="#BBB"
+                                       Name="markText"
+                                       Visibility="Collapsed"
+                                       FontSize="24"
+                                       Opacity="0.6"
+                                       Margin="2,0" />
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Focusable="false"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Grid.Column="1"
+                                          VerticalAlignment="Center"
+                                          MinHeight="20" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+                                 Value="false">
+                            <Setter Property="Opacity"
+                                    TargetName="border"
+                                    Value="0.56" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused"
+                                 Value="true">
+                            <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="#272a30" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Text,RelativeSource={RelativeSource Mode=Self}}"
+                                     Value="">
+                            <Setter Property="Visibility"
+                                    TargetName="markText"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
