@@ -46,6 +46,8 @@ namespace LedgerSyncViewModel
     QTY VARCHAR(255) NOT NULL,             
     Time VARCHAR(255) NOT NULL );";
 
+        public string sql = @"";
+
         public string SQLiteDBCreateCoinSQL = @"CREATE TABLE IF NOT EXISTS Coin (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,  
     Free VARCHAR(255) NOT NULL,            
@@ -261,6 +263,55 @@ namespace LedgerSyncViewModel
                 }
             }
         }
+
+        public void InsertTradeList(string TradeListID,string Symbol,string IsBuyers,string Price,string QTY,string Time)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            {
+                conn.Open();
+                string insertQuery = @"INSERT INTO TradeList (TradeListID, Symbol, IsBuyers, Price, QTY, Time) 
+                                   VALUES (@TradeListID, @Symbol, @IsBuyers, @Price, @QTY, @Time);";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TradeListID", TradeListID);
+                    cmd.Parameters.AddWithValue("@Symbol", Symbol);
+                    cmd.Parameters.AddWithValue("@IsBuyers", IsBuyers);
+                    cmd.Parameters.AddWithValue("@Price", Price);
+                    cmd.Parameters.AddWithValue("@QTY", QTY);
+                    cmd.Parameters.AddWithValue("@Time", Time);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    Debug.WriteLine($"插入TradeList成功，影响行数：{rowsAffected}");
+                }
+            }
+        }
+
+        public string QueryTradeList(string TradeListID)
+        {
+            string isHave = "";
+            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            {
+                conn.Open();
+                string query = "SELECT * FROM TradeList WHERE TradeListID = @TradeListID";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TradeListID", TradeListID); // 查询 BTCUSDT 交易记录
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())  // 逐行读取数据
+                        {                          
+                            Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " +$"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
+                             isHave=reader["ID"].ToString();
+                        }
+                    }
+                }
+            }
+            return isHave;
+        }
+
 
         #endregion
     }
