@@ -312,6 +312,46 @@ namespace LedgerSyncViewModel
             return isHave;
         }
 
+        public void InsertCoin(string Free,string Asset)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            {
+                conn.Open();
+                string insertQuery = @"INSERT INTO Coin (Free, Asset) VALUES (@Free, @Asset);";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Free", Free);  // 资产数量
+                    cmd.Parameters.AddWithValue("@Asset", Asset); // 资产名称
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    Debug.WriteLine($"插入Coin成功，影响行数：{rowsAffected}");
+                }
+            }
+        }
+
+        public string QueryCoin(string Asset)
+        {
+            string isHave = "";
+            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            {
+                conn.Open();
+                string query = "SELECT * FROM Coin WHERE Asset = @Asset";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())  // 逐行读取数据
+                        {
+                            Debug.WriteLine($"ID: {reader["ID"]}, Asset: {reader["Asset"]}, Free: {reader["Free"]}");
+                            isHave = reader["ID"].ToString();
+                        }
+                    }
+                }
+            }
+            return isHave;
+        }
 
         #endregion
     }

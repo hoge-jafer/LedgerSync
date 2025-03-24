@@ -62,8 +62,18 @@ namespace LedgerSyncViewModel
                     CoinEntity coinEntity = new CoinEntity();
                     coinEntity.Asset = name;
                     coinEntity.Free = free.ToString();
-                    ListCoinEntity.Add(coinEntity);
-                    TradeDataModels.ObservableCollectionCoinEntity.Add(coinEntity);
+
+                    var querycoinhave = ListCoinEntity.Where(x => x.Asset == coinEntity.Asset).ToList();
+                    if (querycoinhave.Count == 0)
+                    {
+                        ListCoinEntity.Add(coinEntity);
+                        TradeDataModels.ObservableCollectionCoinEntity.Add(coinEntity);
+                        string ishave = Ioc.Default.GetService<ShellViewModel>().QueryCoin(coinEntity.Asset);
+                        if (string.IsNullOrEmpty(ishave))
+                        {
+                            Ioc.Default.GetService<ShellViewModel>().InsertCoin(coinEntity.Free, coinEntity.Asset);
+                        }
+                    }
                 }
             }
 
@@ -82,8 +92,19 @@ namespace LedgerSyncViewModel
                 CoinEntity coinEntity = new CoinEntity();
                 coinEntity.Asset = name;
                 coinEntity.Free = free.ToString();
-                ListCoinEntity.Add(coinEntity);
-                TradeDataModels.ObservableCollectionCoinEntity.Add(coinEntity);
+
+                var querycoinhave = ListCoinEntity.Where(x=>x.Asset== coinEntity.Asset).ToList();
+                if (querycoinhave.Count == 0)
+                {
+                    ListCoinEntity.Add(coinEntity);
+                    TradeDataModels.ObservableCollectionCoinEntity.Add(coinEntity);
+
+                   string ishave= Ioc.Default.GetService<ShellViewModel>().QueryCoin(coinEntity.Asset);
+                    if (string.IsNullOrEmpty(ishave))
+                    {
+                        Ioc.Default.GetService<ShellViewModel>().InsertCoin(coinEntity.Free, coinEntity.Asset);
+                    }
+                }
             }
             Ioc.Default.GetService<ShellViewModel>().ShellModels.ObservableCollectionCoinEntity = TradeDataModels.ObservableCollectionCoinEntity;
 
