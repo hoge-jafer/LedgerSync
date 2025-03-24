@@ -276,7 +276,7 @@ namespace LedgerSyncViewModel
 
         public void InsertTradeList(string TradeListID,string Symbol,string IsBuyers,string Price,string QTY,string Time)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
                 string insertQuery = @"INSERT INTO TradeList (TradeListID, Symbol, IsBuyers, Price, QTY, Time) 
@@ -300,7 +300,7 @@ namespace LedgerSyncViewModel
         public string QueryTradeList(string TradeListID)
         {
             string isHave = "";
-            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
                 string query = "SELECT * FROM TradeList WHERE TradeListID = @TradeListID";
@@ -324,7 +324,7 @@ namespace LedgerSyncViewModel
 
         public void InsertCoin(string Free,string Asset)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
                 string insertQuery = @"INSERT INTO Coin (Free, Asset) VALUES (@Free, @Asset);";
@@ -343,13 +343,16 @@ namespace LedgerSyncViewModel
         public string QueryCoin(string Asset)
         {
             string isHave = "";
-            using (SQLiteConnection conn = new SQLiteConnection(SQLiteDBPath))
+            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
                 string query = "SELECT * FROM Coin WHERE Asset = @Asset";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
+
+                    cmd.Parameters.AddWithValue("@Asset", Asset); // 查询 BTCUSDT 交易记录
+
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())  // 逐行读取数据
