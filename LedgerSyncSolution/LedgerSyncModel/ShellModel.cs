@@ -15,6 +15,15 @@ namespace LedgerSyncModel
         [ObservableProperty]
         private string navigationContent;
 
+        [ObservableProperty]
+        private Visibility coinVisibility;
+
+        [ObservableProperty]
+        private string navigationSecretKey;
+
+        [ObservableProperty]
+        private Visibility secretKeyVisibility;
+
         [ObservableProperty]// 最高价
         private ObservableCollection<CoinEntity> observableCollectionCoinEntity = new ObservableCollection<CoinEntity>();
 

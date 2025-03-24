@@ -14,7 +14,9 @@
         WindowStartupLocation="CenterScreen"
         WindowState="{Binding ShellModels.SystemState,UpdateSourceTrigger=PropertyChanged}"
         d:DataContext="{d:DesignInstance Type=viewmodel:ShellViewModel}"
-        Title="ShellView" Height="850" Width="1500">
+        Title="ShellView"
+        Height="850"
+        Width="1500">
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding ShellViewLoadCommand,UpdateSourceTrigger=PropertyChanged}"
@@ -24,64 +26,61 @@
     </behaviors:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.05*" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0"
               Width="150"
               HorizontalAlignment="Right">
-   
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
-                        Content="&#xEF2D;"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="30"
-                        Foreground="Black"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Cursor="Hand"
-                        Command="{Binding MiniSystemCommand,UpdateSourceTrigger=PropertyChanged}"
-                        />
-                <Button Grid.Column="1"
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Content="&#xEF2D;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
+                    Foreground="Black"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand"
+                    Command="{Binding MiniSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Column="1"
                     Content="&#xEF2E;"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="30"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
                     Foreground="Black"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Cursor="Hand"
-                        Command="{Binding MaxSystemCommand,UpdateSourceTrigger=PropertyChanged}"
-                       />
-                <Button Grid.Column="2"
-                        Content="&#xEF2C;"
-                        FontFamily="Segoe MDL2 Assets"
-                        FontSize="30"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand"
+                    Command="{Binding MaxSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+            <Button Grid.Column="2"
+                    Content="&#xEF2C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="30"
                     Foreground="Black"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        BorderThickness="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center"
-                        Cursor="Hand"
-                        Command="{Binding ExitSystemCommand,UpdateSourceTrigger=PropertyChanged}"
-                        />
-            
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Cursor="Hand"
+                    Command="{Binding ExitSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -102,7 +101,6 @@
                 <Button Grid.Row="0"
                         Content="密钥"
                         Command="{Binding SecretKeyCommand,UpdateSourceTrigger=PropertyChanged}"
-                   
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
@@ -110,7 +108,6 @@
                 <Button Grid.Row="1"
                         Content="数据"
                         Command="{Binding TradeDataCommand,UpdateSourceTrigger=PropertyChanged}"
-                        
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
@@ -118,26 +115,25 @@
                 <Button Grid.Row="2"
                         Content="导出"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
-              
                         FontSize="30"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
             </Grid>
             <Grid Grid.Column="1">
-            
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.22*"/>
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <ListBox  Grid.Column="0"
-                              Background="Transparent"
-                              ItemsSource="{Binding ShellModels.ObservableCollectionCoinEntity,UpdateSourceTrigger=PropertyChanged}"
-                              HorizontalContentAlignment="Stretch"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.22*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ListBox  Grid.Column="0"
+                          Background="Transparent"
+                          Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
+                          ItemsSource="{Binding ShellModels.ObservableCollectionCoinEntity,UpdateSourceTrigger=PropertyChanged}"
+                          HorizontalContentAlignment="Stretch"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="2">
                                 <Button Grid.Column="0"
                                         Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                         Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
@@ -153,21 +149,25 @@
                                         VerticalContentAlignment="Center"
                                         Cursor="Hand" />
                             </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-
-            
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
                 <Frame Grid.Column="1"
+                       Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
                        Source="{Binding ShellModels.NavigationContent,UpdateSourceTrigger=PropertyChanged}"
+                       NavigationUIVisibility="Hidden"
+                       BorderBrush="Transparent"
+                       BorderThickness="0"
+                       JournalOwnership="UsesParentJournal" />
+                <Frame Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       Visibility="{Binding ShellModels.SecretKeyVisibility,UpdateSourceTrigger=PropertyChanged}"
+                       Source="{Binding ShellModels.NavigationSecretKey,UpdateSourceTrigger=PropertyChanged}"
                        NavigationUIVisibility="Hidden"
                        BorderBrush="Transparent"
                        BorderThickness="0"
                        JournalOwnership="UsesParentJournal" />
             </Grid>
         </Grid>
-            
-
-
     </Grid>
 </Window>

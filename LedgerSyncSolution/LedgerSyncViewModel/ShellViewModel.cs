@@ -67,6 +67,10 @@ namespace LedgerSyncViewModel
         [RelayCommand]
         public async void ShellViewLoad()
         {
+            ShellModels.CoinVisibility = Visibility.Collapsed;
+            ShellModels.SecretKeyVisibility = Visibility.Collapsed;
+            ShellModels.NavigationContent = "/UI/MenuView.xaml";
+            ShellModels.NavigationSecretKey = "/UI/MenuView.xaml";
             bool isNewDatabase = !File.Exists(SQLiteDBPath);
             if (isNewDatabase)
             {
@@ -89,14 +93,20 @@ namespace LedgerSyncViewModel
         [RelayCommand]
         public async void SecretKey()
         {
-            ShellModels.NavigationContent = "/UI/SecretKeyView.xaml";
+            ShellModels.CoinVisibility = Visibility.Collapsed;
+            ShellModels.SecretKeyVisibility = Visibility.Visible;
+            ShellModels.NavigationContent = "/UI/MenuView.xaml";
+            ShellModels.NavigationSecretKey = "/UI/SecretKeyView.xaml";
         }
 
 
         [RelayCommand]
         public async void TradeData()
         {
+            ShellModels.CoinVisibility = Visibility.Visible;
+            ShellModels.SecretKeyVisibility = Visibility.Collapsed;
             ShellModels.NavigationContent = "/UI/TradeDataView.xaml";
+            ShellModels.NavigationSecretKey = "/UI/MenuView.xaml";
         }
 
         [RelayCommand]
