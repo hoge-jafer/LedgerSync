@@ -155,8 +155,6 @@ namespace LedgerSyncViewModel
                 {
                     Ioc.Default.GetService<ShellViewModel>().InsertTradeList(tradeListEntity.TradeListID, tradeListEntity.Symbol, tradeListEntity.IsBuyers, tradeListEntity.Price, tradeListEntity.QTY, tradeListEntity.Year, tradeListEntity.Month, tradeListEntity.Time);
                 }
-
-
                 ListTradeListEntity.Add(tradeListEntity);
                 TradeDataModels.ObservableCollectionTradeListEntity.Add(tradeListEntity);
             }

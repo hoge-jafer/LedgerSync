@@ -27,6 +27,12 @@ namespace LedgerSyncModel
         [ObservableProperty]// 最高价
         private ObservableCollection<CoinEntity> observableCollectionCoinEntity = new ObservableCollection<CoinEntity>();
 
+        [ObservableProperty]// 最高价
+        private ObservableCollection<string> observableCollectionYear = new ObservableCollection<string>();
+
+        [ObservableProperty]// 最高价
+        private string itemYear;
+
         [ObservableProperty]
         private WindowState systemState;
     }

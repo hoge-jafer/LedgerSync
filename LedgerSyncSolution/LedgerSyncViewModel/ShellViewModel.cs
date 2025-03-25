@@ -22,15 +22,23 @@ namespace LedgerSyncViewModel
         public ShellViewModel()
         {
             shellModels = new ShellModel();
-       
-
-    
 
 
+            ShellModels.ObservableCollectionYear.Add("2017");
+            ShellModels.ObservableCollectionYear.Add("2018");
+            ShellModels.ObservableCollectionYear.Add("2019");
+            ShellModels.ObservableCollectionYear.Add("2020");
+            ShellModels.ObservableCollectionYear.Add("2021");
+            ShellModels.ObservableCollectionYear.Add("2022");
+            ShellModels.ObservableCollectionYear.Add("2023");
+            ShellModels.ObservableCollectionYear.Add("2024");
+            ShellModels.ObservableCollectionYear.Add("2025");
+
+            ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count-1];
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
-       public string SQLiteDBPath = "LedgerSync.db";
+        public string SQLiteDBPath = "LedgerSync.db";
 
         public string SQLiteDBCreateSecretKeySQL = @"CREATE TABLE IF NOT EXISTS SecretKey (
     ID INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -48,7 +56,6 @@ Year VARCHAR(255) NOT NULL,
 Month VARCHAR(255) NOT NULL, 
     Time VARCHAR(255) NOT NULL );";
 
-        public string sql = @"";
 
         public string SQLiteDBCreateCoinSQL = @"CREATE TABLE IF NOT EXISTS Coin (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,  
@@ -112,7 +119,7 @@ Month VARCHAR(255) NOT NULL,
         }
 
         [RelayCommand]
-        public  void SelectCoin(string content)
+        public void SelectCoin(string content)
         {
             Ioc.Default.GetService<TradeDataViewModel>().GetTradeListData(content);
         }
@@ -228,7 +235,7 @@ Month VARCHAR(255) NOT NULL,
             }
         }
 
-        public void InsertSecretKey() 
+        public void InsertSecretKey()
         {
             string apiKey = Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey;// "your_api_key";
             string apiSecret = Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret;// "your_api_secret";
@@ -248,7 +255,7 @@ Month VARCHAR(255) NOT NULL,
             }
         }
 
-        public void QuerySecretKey() 
+        public void QuerySecretKey()
         {
             using (var connection = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
@@ -265,8 +272,8 @@ Month VARCHAR(255) NOT NULL,
 
                         Debug.WriteLine($"最大 ID 记录 -> ID: {id}, ApiKey: {apiKey}, ApiSecret: {apiSecret}");
 
-                        Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey= apiKey;// "your_api_key";
-                         Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret= apiSecret;// "your_api_secret";
+                        Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey = apiKey;// "your_api_key";
+                        Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret = apiSecret;// "your_api_secret";
                     }
                     else
                     {
@@ -276,7 +283,7 @@ Month VARCHAR(255) NOT NULL,
             }
         }
 
-        public void InsertTradeList(string TradeListID,string Symbol,string IsBuyers,string Price,string QTY, string Year, string Month, string Time)
+        public void InsertTradeList(string TradeListID, string Symbol, string IsBuyers, string Price, string QTY, string Year, string Month, string Time)
         {
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
@@ -316,9 +323,9 @@ Month VARCHAR(255) NOT NULL,
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())  // 逐行读取数据
-                        {                          
-                            Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " +$"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
-                             isHave=reader["ID"].ToString();
+                        {
+                            Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " + $"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
+                            isHave = reader["ID"].ToString();
                         }
                     }
                 }
@@ -326,17 +333,18 @@ Month VARCHAR(255) NOT NULL,
             return isHave;
         }
 
-        public string QueryTradeListYearMonth(string TradeListID)
+        public string QueryTradeListYearMonth(string Year,string Month)
         {
             string isHave = "";
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
-                string query = "SELECT * FROM TradeList WHERE TradeListID = @TradeListID";
+                string query = "SELECT * FROM TradeList WHERE Year = @Year OR Month = @Month";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@TradeListID", TradeListID); // 查询 BTCUSDT 交易记录
+                    cmd.Parameters.AddWithValue("@Year", Year); // 查询 BTCUSDT 交易记录
+                    cmd.Parameters.AddWithValue("@Month", Month); // 查询 BTCUSDT 交易记录
 
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
@@ -351,7 +359,7 @@ Month VARCHAR(255) NOT NULL,
             return isHave;
         }
 
-        public void InsertCoin(string Free,string Asset)
+        public void InsertCoin(string Free, string Asset)
         {
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
