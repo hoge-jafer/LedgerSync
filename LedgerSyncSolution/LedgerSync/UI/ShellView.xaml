@@ -178,12 +178,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="1"
                                     Content="一月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="2"
                                     Content="二月"
                                     FontSize="20"
                                     Background="Transparent"
@@ -196,12 +200,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="3"
                                     Content="三月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="4"
                                     Content="四月"
                                     FontSize="20"
                                     Background="Transparent"
@@ -214,12 +222,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="5"
                                     Content="五月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="6"
                                     Content="六月"
                                     FontSize="20"
                                     Background="Transparent"
@@ -232,12 +244,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="7"
                                     Content="七月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="8"
                                     Content="八月"
                                     FontSize="20"
                                     Background="Transparent"
@@ -250,12 +266,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="9"
                                     Content="九月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="10"
                                     Content="十月"
                                     FontSize="20"
                                     Background="Transparent"
@@ -268,12 +288,16 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="11"
                                     Content="十一月"
                                     FontSize="20"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                             <Button Grid.Column="1"
+                                    Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                    CommandParameter="12"
                                     Content="十二月"
                                     FontSize="20"
                                     Background="Transparent"

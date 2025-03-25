@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using LedgerSyncModel;
+using LedgerSyncModel.Entity;
 using LedgerSyncViewModel.Helper;
 using System;
 using System.Collections.Generic;
@@ -70,6 +71,8 @@ Month VARCHAR(255) NOT NULL,
                 ORDER BY ID DESC 
                 LIMIT 1;";
 
+        public string selectCoin = "";
+
         [ObservableProperty]
         private ShellModel shellModels;
 
@@ -121,7 +124,18 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void SelectCoin(string content)
         {
+            selectCoin = content;
             Ioc.Default.GetService<TradeDataViewModel>().GetTradeListData(content);
+        }
+
+        [RelayCommand]
+        public void QueryTradeListMonth(string month)
+        {
+            if (!string.IsNullOrEmpty(selectCoin)) 
+            {
+                QueryTradeListYearMonth(ShellModels.ItemYear, month, selectCoin);
+            }
+
         }
 
         [RelayCommand]
@@ -288,8 +302,8 @@ Month VARCHAR(255) NOT NULL,
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
-                string insertQuery = @"INSERT INTO TradeList (TradeListID, Symbol, IsBuyers, Price, QTY, Time) 
-                                   VALUES (@TradeListID, @Symbol, @IsBuyers, @Price, @QTY,@Year,@Month @Time);";
+                string insertQuery = @"INSERT INTO TradeList (TradeListID, Symbol, IsBuyers, Price, QTY,Year,Month,Time) 
+                                   VALUES (@TradeListID, @Symbol, @IsBuyers, @Price, @QTY,@Year,@Month,@Time);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
                 {
@@ -333,30 +347,44 @@ Month VARCHAR(255) NOT NULL,
             return isHave;
         }
 
-        public string QueryTradeListYearMonth(string Year,string Month)
+        public void QueryTradeListYearMonth(string Year,string Month,string Symbol)
         {
             string isHave = "";
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
-                string query = "SELECT * FROM TradeList WHERE Year = @Year OR Month = @Month";
+                string query = "SELECT * FROM TradeList WHERE Year = @Year AND Month = @Month AND Symbol=@Symbol ";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Year", Year); // 查询 BTCUSDT 交易记录
                     cmd.Parameters.AddWithValue("@Month", Month); // 查询 BTCUSDT 交易记录
-
+                    cmd.Parameters.AddWithValue("@Symbol", Symbol+"USDT");
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
+
                         while (reader.Read())  // 逐行读取数据
                         {
                             Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " + $"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
-                            isHave = reader["ID"].ToString();
+                            //isHave = reader["ID"].ToString();
+
+                            TradeListEntity tradeListEntity = new TradeListEntity();
+                            tradeListEntity.TradeListID = reader["TradeListID"].ToString();
+                            tradeListEntity.Symbol = reader["Symbol"].ToString();
+                            tradeListEntity.IsBuyers = reader["IsBuyers"].ToString();
+                            tradeListEntity.Price = reader["Price"].ToString();
+                            tradeListEntity.QTY = reader["QTY"].ToString();
+                            tradeListEntity.Year = reader["Year"].ToString();
+                            tradeListEntity.Month = reader["Month"].ToString();
+                            tradeListEntity.Time = reader["Time"].ToString();
+                            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Add(tradeListEntity);
+
                         }
                     }
                 }
             }
-            return isHave;
+            //return isHave;
         }
 
         public void InsertCoin(string Free, string Asset)
