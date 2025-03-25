@@ -13,6 +13,8 @@ namespace LedgerSyncModel.Entity
         public string IsBuyers { get; set; }
         public string Price { get; set; }
         public string QTY { get; set; }//数量
+        public string Year { get; set; }//数量
+        public string Month { get; set; }//数量
         public string Time { get; set; }
     }
 }

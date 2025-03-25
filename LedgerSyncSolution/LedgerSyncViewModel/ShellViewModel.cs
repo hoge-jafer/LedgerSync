@@ -43,7 +43,9 @@ namespace LedgerSyncViewModel
     Symbol VARCHAR(255) NOT NULL,          
     IsBuyers VARCHAR(255) NOT NULL,        
     Price VARCHAR(255) NOT NULL,           
-    QTY VARCHAR(255) NOT NULL,             
+    QTY VARCHAR(255) NOT NULL, 
+Year VARCHAR(255) NOT NULL, 
+Month VARCHAR(255) NOT NULL, 
     Time VARCHAR(255) NOT NULL );";
 
         public string sql = @"";
@@ -274,13 +276,13 @@ namespace LedgerSyncViewModel
             }
         }
 
-        public void InsertTradeList(string TradeListID,string Symbol,string IsBuyers,string Price,string QTY,string Time)
+        public void InsertTradeList(string TradeListID,string Symbol,string IsBuyers,string Price,string QTY, string Year, string Month, string Time)
         {
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
                 string insertQuery = @"INSERT INTO TradeList (TradeListID, Symbol, IsBuyers, Price, QTY, Time) 
-                                   VALUES (@TradeListID, @Symbol, @IsBuyers, @Price, @QTY, @Time);";
+                                   VALUES (@TradeListID, @Symbol, @IsBuyers, @Price, @QTY,@Year,@Month @Time);";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(insertQuery, conn))
                 {
@@ -289,6 +291,8 @@ namespace LedgerSyncViewModel
                     cmd.Parameters.AddWithValue("@IsBuyers", IsBuyers);
                     cmd.Parameters.AddWithValue("@Price", Price);
                     cmd.Parameters.AddWithValue("@QTY", QTY);
+                    cmd.Parameters.AddWithValue("@Year", Year);
+                    cmd.Parameters.AddWithValue("@Month", Month);
                     cmd.Parameters.AddWithValue("@Time", Time);
 
                     int rowsAffected = cmd.ExecuteNonQuery();
@@ -315,6 +319,31 @@ namespace LedgerSyncViewModel
                         {                          
                             Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " +$"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
                              isHave=reader["ID"].ToString();
+                        }
+                    }
+                }
+            }
+            return isHave;
+        }
+
+        public string QueryTradeListYearMonth(string TradeListID)
+        {
+            string isHave = "";
+            using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
+            {
+                conn.Open();
+                string query = "SELECT * FROM TradeList WHERE TradeListID = @TradeListID";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TradeListID", TradeListID); // 查询 BTCUSDT 交易记录
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())  // 逐行读取数据
+                        {
+                            Debug.WriteLine($"ID: {reader["ID"]}, TradeListID: {reader["TradeListID"]}, Symbol: {reader["Symbol"]}, " + $"IsBuyers: {reader["IsBuyers"]}, Price: {reader["Price"]}, QTY: {reader["QTY"]}, Time: {reader["Time"]}");
+                            isHave = reader["ID"].ToString();
                         }
                     }
                 }

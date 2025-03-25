@@ -122,36 +122,161 @@
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.22*" />
+                    <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ListBox  Grid.Column="0"
-                          Background="Transparent"
-                          Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
-                          ItemsSource="{Binding ShellModels.ObservableCollectionCoinEntity,UpdateSourceTrigger=PropertyChanged}"
-                          HorizontalContentAlignment="Stretch"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="2">
-                                <Button Grid.Column="0"
-                                        Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
-                                        Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-                                        CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
-                                        Style="{StaticResource  ButtonStyleNew}"
-                                        FontSize="54"
-                                        Background="Transparent"
-                                        BorderBrush="Transparent"
-                                        BorderThickness="0"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch"
-                                        HorizontalContentAlignment="Left"
-                                        VerticalContentAlignment="Center"
-                                        Cursor="Hand" />
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+   
+                <Grid Grid.Column="0" Background="Transparent"
+                      Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ListBox  Grid.Row="0"
+                              Background="Transparent"
+                              Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
+                              ItemsSource="{Binding ShellModels.ObservableCollectionCoinEntity,UpdateSourceTrigger=PropertyChanged}"
+                              HorizontalContentAlignment="Stretch"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="2">
+                                    <Button Grid.Column="0"
+                                            Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                            Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="30"
+                                            Background="Transparent"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Left"
+                                            VerticalContentAlignment="Center"
+                                            Cursor="Hand" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="一月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="二月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="三月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="四月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="五月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="六月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="七月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="八月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="九月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="十月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Content="十一月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                            <Button Grid.Column="1"
+                                    Content="十二月"
+                                    FontSize="20"
+                                    Background="Transparent"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="0.5" />
+                        </Grid>
+                    </Grid>
+                </Grid>
                 <Frame Grid.Column="1"
                        Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
                        Source="{Binding ShellModels.NavigationContent,UpdateSourceTrigger=PropertyChanged}"

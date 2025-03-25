@@ -148,11 +148,12 @@ namespace LedgerSyncViewModel
                 tradeListEntity.QTY = exchangeInformationResponseModel[m].qty;
                 DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(exchangeInformationResponseModel[m].time).LocalDateTime;
                 tradeListEntity.Time = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
-
+                tradeListEntity.Year = dateTime.Year.ToString();
+                tradeListEntity.Month = dateTime.Month.ToString();
                 string ishave = Ioc.Default.GetService<ShellViewModel>().QueryTradeList(tradeListEntity.TradeListID);
                 if (string.IsNullOrEmpty(ishave))
                 {
-                    Ioc.Default.GetService<ShellViewModel>().InsertTradeList(tradeListEntity.TradeListID, tradeListEntity.Symbol, tradeListEntity.IsBuyers, tradeListEntity.Price, tradeListEntity.QTY, tradeListEntity.Time);
+                    Ioc.Default.GetService<ShellViewModel>().InsertTradeList(tradeListEntity.TradeListID, tradeListEntity.Symbol, tradeListEntity.IsBuyers, tradeListEntity.Price, tradeListEntity.QTY, tradeListEntity.Year, tradeListEntity.Month, tradeListEntity.Time);
                 }
 
 
