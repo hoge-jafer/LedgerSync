@@ -39,6 +39,8 @@ namespace LedgerSyncViewModel
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
+
+        Window window;
         public string SQLiteDBPath = "LedgerSync.db";
 
         public string SQLiteDBCreateSecretKeySQL = @"CREATE TABLE IF NOT EXISTS SecretKey (
@@ -77,8 +79,10 @@ Month VARCHAR(255) NOT NULL,
         private ShellModel shellModels;
 
         [RelayCommand]
-        public async void ShellViewLoad()
+        public async void ShellViewLoad(FrameworkElement frameworkElement)
         {
+            window = (Window)frameworkElement;
+            window.MouseLeftButtonDown += delegate { window.DragMove(); };
             ShellModels.CoinVisibility = Visibility.Collapsed;
             ShellModels.SecretKeyVisibility = Visibility.Collapsed;
             ShellModels.NavigationContent = "/UI/MenuView.xaml";

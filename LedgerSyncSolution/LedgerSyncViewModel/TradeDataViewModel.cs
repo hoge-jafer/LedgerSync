@@ -39,7 +39,6 @@ namespace LedgerSyncViewModel
             if (Ioc.Default.GetService<ShellViewModel>().tradingAccountTrade==null)
             {
                 return;
-
             }
 
             ListCoinEntity.Clear();
@@ -76,7 +75,7 @@ namespace LedgerSyncViewModel
                     }
                 }
             }
-
+            Ioc.Default.GetService<ShellViewModel>().ShellModels.ObservableCollectionCoinEntity = TradeDataModels.ObservableCollectionCoinEntity;
 
             var results = await Ioc.Default.GetService<ShellViewModel>().wallet.FundingWallet();
             if (results==null)
