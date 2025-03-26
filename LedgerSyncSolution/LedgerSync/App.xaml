@@ -5,6 +5,34 @@
              StartupUri="/UI/ShellView.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <Style TargetType="Window"
+                   x:Key="WindowStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Window">
+                            <Border Background="Black"
+                                    CornerRadius="6.18"
+                                    Margin="0"
+                                    BorderBrush="Black"
+                                    BorderThickness="2">
+                                <Border.Effect>
+                                    <!--<DropShadowEffect Color="#3E4462"
+                                                      Direction="100"
+                                                      ShadowDepth="0"
+                                                      BlurRadius="10"
+                                                      Opacity="1" />-->
+                                    <DropShadowEffect Color="#3E4462"
+                                                      ShadowDepth="5"
+                                                      Direction="-45"
+                                                      BlurRadius="20"
+                                                      Opacity="1" />
+                                </Border.Effect>
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/LedgerSync;component/Style/ButtonDictionary.xaml" />
                 <ResourceDictionary Source="/LedgerSync;component/Style/TextBoxDictionary.xaml" />

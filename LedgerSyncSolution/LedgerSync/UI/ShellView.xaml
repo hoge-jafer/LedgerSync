@@ -14,9 +14,11 @@
         WindowStartupLocation="CenterScreen"
         WindowState="{Binding ShellModels.SystemState,UpdateSourceTrigger=PropertyChanged}"
         d:DataContext="{d:DesignInstance Type=viewmodel:ShellViewModel}"
+        Opacity="0.8"
         Title="ShellView"
         Height="850"
-        Width="1500">
+        Width="1500"
+        Style="{StaticResource WindowStyle}">
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding ShellViewLoadCommand,UpdateSourceTrigger=PropertyChanged}"
@@ -42,7 +44,7 @@
                     Content="&#xEF2D;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="30"
-                    Foreground="Black"
+                    Foreground="White"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="0"
@@ -56,7 +58,7 @@
                     Content="&#xEF2E;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="30"
-                    Foreground="Black"
+                    Foreground="White"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="0"
@@ -70,7 +72,7 @@
                     Content="&#xEF2C;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="30"
-                    Foreground="Black"
+                    Foreground="White"
                     Background="Transparent"
                     BorderBrush="Transparent"
                     BorderThickness="0"
@@ -102,6 +104,7 @@
                         Content="密钥"
                         Command="{Binding SecretKeyCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
+                        Foreground="White"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -109,6 +112,7 @@
                         Content="数据"
                         Command="{Binding TradeDataCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
+                        Foreground="White"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -116,6 +120,7 @@
                         Content="同步"
                         Command="{Binding SyncDataLocalCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
+                        Foreground="White"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -123,6 +128,7 @@
                         Content="分析"
                         Command="{Binding AnalyzeTradeListCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
+                        Foreground="White"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -130,6 +136,7 @@
                         Content="导出"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
+                        Foreground="White"
                         Background="Transparent"
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
@@ -161,6 +168,7 @@
                                             Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                             CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                             FontSize="30"
+                                            Foreground="White"
                                             Background="Transparent"
                                             BorderBrush="Transparent"
                                             BorderThickness="0"
@@ -176,7 +184,10 @@
                     <ComboBox Grid.Row="1"
                               ItemsSource="{Binding ShellModels.ObservableCollectionYear,UpdateSourceTrigger=PropertyChanged}"
                               SelectedItem="{Binding ShellModels.ItemYear,UpdateSourceTrigger=PropertyChanged}"
-                              FontSize="30"/>
+                              FontSize="30"
+                              Foreground="White"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"/>
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -196,6 +207,7 @@
                                     CommandParameter="1"
                                     Content="一月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -204,6 +216,7 @@
                                     CommandParameter="2"
                                     Content="二月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -218,6 +231,7 @@
                                     CommandParameter="3"
                                     Content="三月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -226,6 +240,7 @@
                                     CommandParameter="4"
                                     Content="四月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -240,6 +255,7 @@
                                     CommandParameter="5"
                                     Content="五月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -248,6 +264,7 @@
                                     CommandParameter="6"
                                     Content="六月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -262,6 +279,7 @@
                                     CommandParameter="7"
                                     Content="七月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -270,6 +288,7 @@
                                     CommandParameter="8"
                                     Content="八月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -284,6 +303,7 @@
                                     CommandParameter="9"
                                     Content="九月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -292,6 +312,7 @@
                                     CommandParameter="10"
                                     Content="十月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -306,6 +327,7 @@
                                     CommandParameter="11"
                                     Content="十一月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
@@ -314,6 +336,7 @@
                                     CommandParameter="12"
                                     Content="十二月"
                                     FontSize="20"
+                                    Foreground="White"
                                     Background="Transparent"
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />

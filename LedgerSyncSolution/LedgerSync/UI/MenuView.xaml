@@ -12,8 +12,7 @@
     <behaviors:Interaction.Triggers>
         <behaviors:EventTrigger EventName="Loaded">
             <behaviors:InvokeCommandAction Command="{Binding ShellViewLoadCommand,UpdateSourceTrigger=PropertyChanged}"
-                                           PassEventArgsToCommand="True"
-                                           CommandParameter="{Binding ElementName=ShellViewWindow,UpdateSourceTrigger=PropertyChanged}" />
+                                           PassEventArgsToCommand="True"/>
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
 
