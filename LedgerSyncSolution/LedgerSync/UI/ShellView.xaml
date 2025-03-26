@@ -120,6 +120,13 @@
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
                 <Button Grid.Row="3"
+                        Content="分析"
+                        Command="{Binding AnalyzeTradeListCommand,UpdateSourceTrigger=PropertyChanged}"
+                        FontSize="30"
+                        Background="Transparent"
+                        BorderBrush="LightGray"
+                        BorderThickness="0.5" />
+                <Button Grid.Row="4"
                         Content="导出"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
