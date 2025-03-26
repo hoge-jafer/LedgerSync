@@ -139,6 +139,14 @@ Month VARCHAR(255) NOT NULL,
         }
 
         [RelayCommand]
+        public void SyncDataLocal()
+        {
+            //Ioc.Default.GetService<TradeDataViewModel>().Print();
+            //Ioc.Default.GetService<ShellViewModel>().ShellModels.ObservableCollectionCoinEntity = TradeDataModels.ObservableCollectionCoinEntity;
+            Ioc.Default.GetService<TradeDataViewModel>().SyncData();
+        }
+
+        [RelayCommand]
         public void Print()
         {
             Ioc.Default.GetService<TradeDataViewModel>().Print();

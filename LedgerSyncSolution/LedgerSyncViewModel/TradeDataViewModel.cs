@@ -186,6 +186,16 @@ namespace LedgerSyncViewModel
             }
         }
 
+        public void SyncData()
+        {
+            //Ioc.Default.GetService<ShellViewModel>().ShellModels.ObservableCollectionCoinEntity = TradeDataModels.ObservableCollectionCoinEntity;
+
+            for (int m = 0; m < TradeDataModels.ObservableCollectionCoinEntity.Count; m++)
+            {
+                GetTradeListData(TradeDataModels.ObservableCollectionCoinEntity[m].Asset);
+            }
+        }
+
         #endregion
     }
 }
