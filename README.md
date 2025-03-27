@@ -8,3 +8,11 @@ Binance的交易记录存放于本地(Binance transaction records are stored loc
 
 ## 计划2，交易记录以PDF形式进行打印
 * 打算每个币种的交易记录都以PDF形式导出
+
+![首页](图片URL)
+
+![数据](图片URL)
+
+![导出](图片URL)
+
+![PDF](图片URL)
