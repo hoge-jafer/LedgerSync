@@ -9,10 +9,10 @@ Binance的交易记录存放于本地(Binance transaction records are stored loc
 ## 计划2，交易记录以PDF形式进行打印
 * 打算每个币种的交易记录都以PDF形式导出
 
-![首页](图片URL)
+![首页](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu.png)
 
-![数据](图片URL)
+![数据](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu2.png)
 
-![导出](图片URL)
+![导出](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu3.png)
 
-![PDF](图片URL)
+![PDF](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu4.png)
