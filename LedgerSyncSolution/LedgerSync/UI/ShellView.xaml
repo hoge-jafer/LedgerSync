@@ -165,7 +165,7 @@
                                 <Grid Margin="2">
                                     <Button Grid.Column="0"
                                             Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
-                                            Command="{Binding DataContext.SelectCoinCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            Command="{Binding DataContext.QueryTradeListSymbolCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                             CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
                                             FontSize="30"
                                             Foreground="White"
