@@ -146,12 +146,13 @@
                     <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-   
-                <Grid Grid.Column="0" Background="Transparent"
+
+                <Grid Grid.Column="0"
+                      Background="Transparent"
                       Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
-                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.1*" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <ListBox  Grid.Row="0"
@@ -187,7 +188,7 @@
                               FontSize="30"
                               Foreground="Gray"
                               VerticalContentAlignment="Center"
-                              HorizontalContentAlignment="Center"/>
+                              HorizontalContentAlignment="Center" />
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition />
