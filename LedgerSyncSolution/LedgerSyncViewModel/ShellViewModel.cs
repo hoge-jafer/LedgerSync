@@ -11,6 +11,7 @@ using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -136,7 +137,7 @@ Month VARCHAR(255) NOT NULL,
         public void QueryTradeListSymbol(string Symbol)
         {
             string isHave = "";
-
+            selectCoin = Symbol;
             //var newSymbol = Symbol + "USDT";
             //Symbol = newSymbol;
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
