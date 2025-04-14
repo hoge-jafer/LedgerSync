@@ -16,7 +16,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodel:ShellViewModel}"
         Opacity="0.8"
         Title="LedgerSync"
-        Height="850"
+        Height="969"
         Width="1500"
         Style="{StaticResource WindowStyle}">
     <behaviors:Interaction.Triggers>
