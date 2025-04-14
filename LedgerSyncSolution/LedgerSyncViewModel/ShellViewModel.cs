@@ -207,6 +207,24 @@ Month VARCHAR(255) NOT NULL,
             Ioc.Default.GetService<TradeDataViewModel>().Print();
         }
 
+        #region ExitSystem
+
+        [RelayCommand]
+        public void PreviousContent()
+        {
+        }
+
+        #endregion
+
+        #region ExitSystem
+
+        [RelayCommand]
+        public void NextContent()
+        {
+        }
+
+        #endregion
+
         #region MiniSystem
 
         [RelayCommand]
@@ -249,6 +267,8 @@ Month VARCHAR(255) NOT NULL,
         }
 
         #endregion
+
+
 
         #region Action
 

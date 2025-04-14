@@ -372,8 +372,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0"
-                            Content="&#xEF2D;"
-                            FontFamily="Segoe MDL2 Assets"
+                            Content="上一页"
                             FontSize="30"
                             Foreground="White"
                             Background="Transparent"
@@ -384,7 +383,7 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Cursor="Hand"
-                            Command="{Binding MiniSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+                            Command="{Binding PreviousContentCommand,UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Column="1"
                                Text="&#xEF2E;"
                                FontFamily="Segoe MDL2 Assets"
@@ -395,8 +394,7 @@
                                VerticalAlignment="Stretch"
                                Cursor="Hand" />
                     <Button Grid.Column="2"
-                            Content="&#xEF2C;"
-                            FontFamily="Segoe MDL2 Assets"
+                            Content="下一页"
                             FontSize="30"
                             Foreground="White"
                             Background="Transparent"
@@ -407,7 +405,7 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Cursor="Hand"
-                            Command="{Binding ExitSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+                            Command="{Binding NextContentCommand,UpdateSourceTrigger=PropertyChanged}" />
 
                 </Grid>
             </Grid>
