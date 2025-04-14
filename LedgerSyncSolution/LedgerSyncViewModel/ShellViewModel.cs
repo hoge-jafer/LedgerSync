@@ -7,6 +7,7 @@ using LedgerSyncModel.Entity;
 using LedgerSyncViewModel.Helper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -37,9 +38,12 @@ namespace LedgerSyncViewModel
             ShellModels.ObservableCollectionYear.Add("2025");
 
             ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count-1];
+            GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
+
+       public ObservableCollection<TradeListEntity> GlobalTradeListEntities;
 
         Window window;
         public string SQLiteDBPath = "LedgerSync.db";
@@ -141,6 +145,7 @@ Month VARCHAR(255) NOT NULL,
             //var newSymbol = Symbol + "USDT";
             //Symbol = newSymbol;
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
+            GlobalTradeListEntities.Clear();
             using (SQLiteConnection conn = new SQLiteConnection($"Data Source={SQLiteDBPath};Version=3;"))
             {
                 conn.Open();
@@ -168,7 +173,8 @@ Month VARCHAR(255) NOT NULL,
                             tradeListEntity.Year = reader["Year"].ToString();
                             tradeListEntity.Month = reader["Month"].ToString();
                             tradeListEntity.Time = reader["Time"].ToString();
-                            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Add(tradeListEntity);
+                            GlobalTradeListEntities.Add(tradeListEntity);
+                            //Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Add(tradeListEntity);
 
                         }
                     }
@@ -176,6 +182,7 @@ Month VARCHAR(255) NOT NULL,
             }
 
             //获取前20条记录。
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(GlobalTradeListEntities.Take(20));
 
             //return isHave;
         }
