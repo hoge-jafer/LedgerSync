@@ -385,13 +385,12 @@
                             Cursor="Hand"
                             Command="{Binding PreviousContentCommand,UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Column="1"
-                               Text="&#xEF2E;"
-                               FontFamily="Segoe MDL2 Assets"
+                               Text="第1页/共1页"
                                FontSize="30"
                                Foreground="White"
                                Background="Transparent"
-                               HorizontalAlignment="Stretch"
-                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
                                Cursor="Hand" />
                     <Button Grid.Column="2"
                             Content="下一页"
