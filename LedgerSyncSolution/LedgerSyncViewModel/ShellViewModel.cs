@@ -38,15 +38,15 @@ namespace LedgerSyncViewModel
             ShellModels.ObservableCollectionYear.Add("2024");
             ShellModels.ObservableCollectionYear.Add("2025");
 
-            ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count-1];
+            ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count - 1];
             GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
 
-       public ObservableCollection<TradeListEntity> GlobalTradeListEntities;
+        public ObservableCollection<TradeListEntity> GlobalTradeListEntities;
 
-        public int pageNumber=1;
+        public int pageNumber = 1;
 
         Window window;
         public string SQLiteDBPath = "LedgerSync.db";
@@ -196,7 +196,7 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void QueryTradeListMonth(string month)
         {
-            if (!string.IsNullOrEmpty(selectCoin)) 
+            if (!string.IsNullOrEmpty(selectCoin))
             {
                 QueryTradeListYearMonth(ShellModels.ItemYear, month, selectCoin);
             }
@@ -234,7 +234,11 @@ Month VARCHAR(255) NOT NULL,
             if (pageNumber <= 0)
             {
                 pageNumber = 1;
+                pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
             }
+
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(pagedData);
             ShellModels.CurrentPage = pageNumber;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
@@ -249,10 +253,13 @@ Month VARCHAR(255) NOT NULL,
         {
             var pagedData = GlobalTradeListEntities.Skip((pageNumber + 1) * 20).Take(20).ToList();
             pageNumber++;
-            if (pagedData.Count ==0) 
+            if (pagedData.Count == 0)
             {
                 pageNumber--;
+                pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
             }
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
+            Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(pagedData);
             ShellModels.CurrentPage = pageNumber;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
@@ -465,7 +472,7 @@ Month VARCHAR(255) NOT NULL,
             return isHave;
         }
 
-        public void QueryTradeListYearMonth(string Year,string Month,string Symbol)
+        public void QueryTradeListYearMonth(string Year, string Month, string Symbol)
         {
             string isHave = "";
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
@@ -478,7 +485,7 @@ Month VARCHAR(255) NOT NULL,
                 {
                     cmd.Parameters.AddWithValue("@Year", Year); // 查询 BTCUSDT 交易记录
                     cmd.Parameters.AddWithValue("@Month", Month); // 查询 BTCUSDT 交易记录
-                    cmd.Parameters.AddWithValue("@Symbol", Symbol+"USDT");
+                    cmd.Parameters.AddWithValue("@Symbol", Symbol + "USDT");
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
 
