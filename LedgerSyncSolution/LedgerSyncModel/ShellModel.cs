@@ -24,16 +24,19 @@ namespace LedgerSyncModel
         [ObservableProperty]
         private Visibility secretKeyVisibility;
 
-        [ObservableProperty]// 最高价
+        [ObservableProperty]
         private ObservableCollection<CoinEntity> observableCollectionCoinEntity = new ObservableCollection<CoinEntity>();
 
-        [ObservableProperty]// 最高价
+        [ObservableProperty]
         private ObservableCollection<string> observableCollectionYear = new ObservableCollection<string>();
 
-        [ObservableProperty]// 最高价
+        [ObservableProperty]
         private string itemYear;
 
         [ObservableProperty]
         private WindowState systemState;
+
+        [ObservableProperty]
+        private int totalPage;
     }
 }

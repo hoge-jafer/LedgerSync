@@ -188,6 +188,8 @@ Month VARCHAR(255) NOT NULL,
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(GlobalTradeListEntities.Take(20));
 
             //return isHave;
+            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
+            ShellModels.TotalPage = totalPages;
         }
 
         [RelayCommand]
@@ -232,7 +234,8 @@ Month VARCHAR(255) NOT NULL,
             {
                 pageNumber = 1;
             }
-
+            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
+            ShellModels.TotalPage = totalPages;
         }
 
         #endregion
@@ -248,6 +251,9 @@ Month VARCHAR(255) NOT NULL,
             {
                 pageNumber--;
             }
+
+            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
+            ShellModels.TotalPage = totalPages;
         }
 
         #endregion
