@@ -10,7 +10,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Window">
-                            <Border Background="Black"
+                            <Border Background="#80000000"
                                     CornerRadius="6.18"
                                     Margin="0"
                                     BorderBrush="Black"
@@ -21,7 +21,7 @@
                                                       ShadowDepth="0"
                                                       BlurRadius="10"
                                                       Opacity="1" />-->
-                                    <DropShadowEffect Color="#3E4462"
+                                    <DropShadowEffect Color="Gray"
                                                       ShadowDepth="5"
                                                       Direction="-45"
                                                       BlurRadius="20"
