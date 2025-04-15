@@ -40,6 +40,8 @@ namespace LedgerSyncViewModel
 
             ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count - 1];
             GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
+            ShellModels.CurrentPage = 1;
+            ShellModels.TotalPage = 1;
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
