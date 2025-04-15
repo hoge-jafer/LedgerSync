@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using LedgerSyncModel;
 using LedgerSyncModel.Entity;
 using LedgerSyncViewModel.Helper;
+using OxyPlot;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,6 +45,8 @@ namespace LedgerSyncViewModel
         public Wallet wallet;
 
        public ObservableCollection<TradeListEntity> GlobalTradeListEntities;
+
+        public int pageNumber=1;
 
         Window window;
         public string SQLiteDBPath = "LedgerSync.db";
@@ -222,6 +225,14 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void PreviousContent()
         {
+
+            var pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
+            pageNumber--;
+            if (pageNumber <= 0)
+            {
+                pageNumber = 1;
+            }
+
         }
 
         #endregion
@@ -231,6 +242,12 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void NextContent()
         {
+            var pagedData = GlobalTradeListEntities.Skip((pageNumber + 1) * 20).Take(20).ToList();
+            pageNumber++;
+            if (pagedData.Count ==0) 
+            {
+                pageNumber--;
+            }
         }
 
         #endregion
