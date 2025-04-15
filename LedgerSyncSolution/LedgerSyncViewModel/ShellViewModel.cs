@@ -188,9 +188,10 @@ Month VARCHAR(255) NOT NULL,
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(GlobalTradeListEntities.Take(20));
 
             //return isHave;
+            pageNumber = 1;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
-            ShellModels.CurrentPage = 1;
+            ShellModels.CurrentPage = pageNumber;
         }
 
         [RelayCommand]
@@ -228,19 +229,17 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void PreviousContent()
         {
-
-            var pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
+            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             pageNumber--;
             if (pageNumber <= 0)
             {
                 pageNumber = 1;
-                pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
+                //pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
             }
-
+            var pagedData = GlobalTradeListEntities.Skip((pageNumber) * 20).Take(20).ToList();
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(pagedData);
             ShellModels.CurrentPage = pageNumber;
-            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
         }
 
@@ -251,17 +250,17 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void NextContent()
         {
-            var pagedData = GlobalTradeListEntities.Skip((pageNumber + 1) * 20).Take(20).ToList();
+            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             pageNumber++;
-            if (pagedData.Count == 0)
+            if (pageNumber > totalPages)
             {
                 pageNumber--;
-                pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
+                //pagedData = GlobalTradeListEntities.Skip((pageNumber - 1) * 20).Take(20).ToList();
             }
+            var pagedData = GlobalTradeListEntities.Skip((pageNumber) * 20).Take(20).ToList();
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity.Clear();
             Ioc.Default.GetService<TradeDataViewModel>().TradeDataModels.ObservableCollectionTradeListEntity = new ObservableCollection<TradeListEntity>(pagedData);
             ShellModels.CurrentPage = pageNumber;
-            int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
         }
 
