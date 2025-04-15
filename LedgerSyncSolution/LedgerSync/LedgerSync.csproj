@@ -7,11 +7,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
-    <ApplicationIcon>LedgerSync.ico</ApplicationIcon>
+    <ApplicationIcon>无标题.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="LedgerSync.ico" />
+    <Content Include="无标题.ico" />
   </ItemGroup>
 
   <ItemGroup>

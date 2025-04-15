@@ -10,7 +10,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Window">
-                            <Border Background="#80000000"
+                            <Border Background="#40FFFFFF"
                                     CornerRadius="6.18"
                                     Margin="0"
                                     BorderBrush="Black"

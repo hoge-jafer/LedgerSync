@@ -14,7 +14,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="{Binding ShellModels.SystemState,UpdateSourceTrigger=PropertyChanged}"
         d:DataContext="{d:DesignInstance Type=viewmodel:ShellViewModel}"
-        Opacity="0.8"
+        Opacity="0.9"
         Title="LedgerSync"
         Height="969"
         Width="1500"
