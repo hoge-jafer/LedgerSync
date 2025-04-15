@@ -437,14 +437,6 @@
                                    Foreground="White"
                                    Text="页" />
                     </Grid>
-                    <TextBlock Grid.Column="1"
-                               Text="第1页/共1页"
-                               FontSize="30"
-                               Foreground="White"
-                               Background="Transparent"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Cursor="Hand" />
                     <Button Grid.Column="2"
                             Content="下一页"
                             FontSize="30"
