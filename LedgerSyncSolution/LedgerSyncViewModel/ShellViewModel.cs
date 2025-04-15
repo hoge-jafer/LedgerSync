@@ -190,6 +190,7 @@ Month VARCHAR(255) NOT NULL,
             //return isHave;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
+            ShellModels.CurrentPage = 1;
         }
 
         [RelayCommand]
@@ -234,6 +235,7 @@ Month VARCHAR(255) NOT NULL,
             {
                 pageNumber = 1;
             }
+            ShellModels.CurrentPage = pageNumber;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
         }
@@ -251,7 +253,7 @@ Month VARCHAR(255) NOT NULL,
             {
                 pageNumber--;
             }
-
+            ShellModels.CurrentPage = pageNumber;
             int totalPages = (int)Math.Ceiling((double)GlobalTradeListEntities.Count / 20);
             ShellModels.TotalPage = totalPages;
         }

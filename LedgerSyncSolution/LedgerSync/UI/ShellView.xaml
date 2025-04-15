@@ -384,6 +384,59 @@
                             VerticalContentAlignment="Center"
                             Cursor="Hand"
                             Command="{Binding PreviousContentCommand,UpdateSourceTrigger=PropertyChanged}" />
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="第" />
+                        <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="{Binding ShellModels.CurrentPage,UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="页" />
+                        <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="/" />
+                        <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="共" />
+                        <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="{Binding ShellModels.TotalPage,UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Grid.Column="6"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Foreground="White"
+                                   Text="页" />
+                    </Grid>
                     <TextBlock Grid.Column="1"
                                Text="第1页/共1页"
                                FontSize="30"

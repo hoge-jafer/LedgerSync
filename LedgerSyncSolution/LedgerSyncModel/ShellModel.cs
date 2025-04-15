@@ -38,5 +38,8 @@ namespace LedgerSyncModel
 
         [ObservableProperty]
         private int totalPage;
+
+        [ObservableProperty]
+        private int currentPage;
     }
 }
