@@ -41,6 +41,8 @@ namespace LedgerSyncViewModel
             ShellModels.ObservableCollectionLanguage.Add("zh-CN");
             ShellModels.ObservableCollectionLanguage.Add("en-US");
 
+
+
             ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count - 1];
             GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
             ShellModels.CurrentPage = 1;
@@ -116,6 +118,9 @@ Month VARCHAR(255) NOT NULL,
 
             tradingAccountTrade = new SpotAccountTrade(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
             wallet = new Wallet(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
+
+            ShellModels.ItemLanguage = ShellModels.ObservableCollectionLanguage[1];
+            LanguageSelection();
         }
 
 

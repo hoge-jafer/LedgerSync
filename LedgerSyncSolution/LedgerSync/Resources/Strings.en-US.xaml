@@ -27,4 +27,5 @@
     <sys:String x:Key="Time">Time</sys:String>
     <sys:String x:Key="Type">Type</sys:String>
     <sys:String x:Key="Analyze">Analyze</sys:String>
+    <sys:String x:Key="Export">Export</sys:String>
 </ResourceDictionary>

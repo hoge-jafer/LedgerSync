@@ -27,4 +27,5 @@
     <sys:String x:Key="Time">时间</sys:String>
     <sys:String x:Key="Type">类型</sys:String>
     <sys:String x:Key="Analyze">分析</sys:String>
+    <sys:String x:Key="Export">导出</sys:String>
 </ResourceDictionary>

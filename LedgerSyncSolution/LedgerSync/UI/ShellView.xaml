@@ -111,7 +111,7 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.1*" />
+                <ColumnDefinition Width="0.15*" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
@@ -158,7 +158,7 @@
                         BorderBrush="LightGray"
                         BorderThickness="0.5" />
                 <Button Grid.Row="4"
-                        Content="导出"
+                        Content="{DynamicResource Export}"
                         Command="{Binding PrintCommand,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="30"
                         Foreground="Black"
@@ -168,6 +168,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
@@ -179,10 +180,180 @@
                       Background="Transparent"
                       Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}">
                     <Grid.RowDefinitions>
+                        <!--<RowDefinition />-->
+                        <RowDefinition Height="0.05*" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--<ListBox  Grid.Row="0"
+                              Background="Transparent"
+                              Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
+                              ItemsSource="{Binding ShellModels.ObservableCollectionCoinEntity,UpdateSourceTrigger=PropertyChanged}"
+                              HorizontalContentAlignment="Stretch"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="2">
+                                    <Button Grid.Column="0"
+                                            Content="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                            Command="{Binding DataContext.QueryTradeListSymbolCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding Asset,UpdateSourceTrigger=PropertyChanged}"
+                                            FontSize="30"
+                                            Foreground="Black"
+                                            Background="Transparent"
+                                            BorderBrush="Transparent"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Left"
+                                            VerticalContentAlignment="Center"
+                                            Cursor="Hand" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>-->
+                    <ComboBox Grid.Row="0"
+                              ItemsSource="{Binding ShellModels.ObservableCollectionYear,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding ShellModels.ItemYear,UpdateSourceTrigger=PropertyChanged}"
+                              FontSize="30"
+                              Foreground="Black"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center" />
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="1"
+                                Content="{DynamicResource Jan}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="1"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="2"
+                                Content="{DynamicResource Feb}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+
+                        <Button Grid.Row="2"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="3"
+                                Content="{DynamicResource Mar}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="3"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="4"
+                                Content="{DynamicResource Apr}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="4"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="5"
+                                Content="{DynamicResource May}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="5"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="6"
+                                Content="{DynamicResource Jun}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="6"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="7"
+                                Content="{DynamicResource Jul}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="7"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="8"
+                                Content="{DynamicResource Aug}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+
+                        <Button Grid.Row="8"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="9"
+                                Content="{DynamicResource Sep}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="9"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="10"
+                                Content="{DynamicResource Oct}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="10"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="11"
+                                Content="{DynamicResource Nov}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+                        <Button Grid.Row="11"
+                                Command="{Binding QueryTradeListMonthCommand,UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="12"
+                                Content="{DynamicResource Dec}"
+                                FontSize="20"
+                                Foreground="Black"
+                                Background="Transparent"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.5" />
+
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Background="Transparent"
+                      Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}">
+                    <!--<Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="0.1*" />
                         <RowDefinition />
-                    </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>-->
                     <ListBox  Grid.Row="0"
                               Background="Transparent"
                               Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
@@ -210,7 +381,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <ComboBox Grid.Row="1"
+                    <!--<ComboBox Grid.Row="1"
                               ItemsSource="{Binding ShellModels.ObservableCollectionYear,UpdateSourceTrigger=PropertyChanged}"
                               SelectedItem="{Binding ShellModels.ItemYear,UpdateSourceTrigger=PropertyChanged}"
                               FontSize="30"
@@ -370,9 +541,9 @@
                                     BorderBrush="LightGray"
                                     BorderThickness="0.5" />
                         </Grid>
-                    </Grid>
+                    </Grid>-->
                 </Grid>
-                <Frame Grid.Column="1"
+                <Frame Grid.Column="2"
                        Visibility="{Binding ShellModels.CoinVisibility,UpdateSourceTrigger=PropertyChanged}"
                        Source="{Binding ShellModels.NavigationContent,UpdateSourceTrigger=PropertyChanged}"
                        NavigationUIVisibility="Hidden"
@@ -380,7 +551,7 @@
                        BorderThickness="0"
                        JournalOwnership="UsesParentJournal" />
                 <Frame Grid.Column="0"
-                       Grid.ColumnSpan="2"
+                       Grid.ColumnSpan="3"
                        Visibility="{Binding ShellModels.SecretKeyVisibility,UpdateSourceTrigger=PropertyChanged}"
                        Source="{Binding ShellModels.NavigationSecretKey,UpdateSourceTrigger=PropertyChanged}"
                        NavigationUIVisibility="Hidden"
@@ -389,7 +560,7 @@
                        JournalOwnership="UsesParentJournal" />
                 <Grid Grid.Row="1"
                       Grid.Column="0"
-                      Grid.ColumnSpan="2"
+                      Grid.ColumnSpan="3"
                       HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />

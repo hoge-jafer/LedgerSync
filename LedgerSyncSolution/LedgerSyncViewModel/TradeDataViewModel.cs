@@ -48,6 +48,7 @@ namespace LedgerSyncViewModel
             var result = await Ioc.Default.GetService<ShellViewModel>().tradingAccountTrade.AccountInformation(8000);
             if (result == null)
             {
+                MessageBox.Show("Network Error!");
                 return;
             }
             AccountInformationResponseModel accountInformationResponseModel = JsonConvert.DeserializeObject<AccountInformationResponseModel>(result);
