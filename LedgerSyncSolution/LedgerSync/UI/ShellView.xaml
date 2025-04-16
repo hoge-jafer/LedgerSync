@@ -31,59 +31,84 @@
             <RowDefinition Height="0.05*" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Width="150"
-              HorizontalAlignment="Right">
-
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1115*" />
                 <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Content="&#xEF2D;"
-                    FontFamily="Segoe MDL2 Assets"
-                    FontSize="30"
-                    Foreground="Black"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    BorderThickness="0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Cursor="Hand"
-                    Command="{Binding MiniSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
-            <Button Grid.Column="1"
-                    Content="&#xEF2E;"
-                    FontFamily="Segoe MDL2 Assets"
-                    FontSize="30"
-                    Foreground="Black"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    BorderThickness="0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Cursor="Hand"
-                    Command="{Binding MaxSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
-            <Button Grid.Column="2"
-                    Content="&#xEF2C;"
-                    FontFamily="Segoe MDL2 Assets"
-                    FontSize="30"
-                    Foreground="Black"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    BorderThickness="0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Cursor="Hand"
-                    Command="{Binding ExitSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+            <Grid Grid.Column="0">
+                <ComboBox
+                        ItemsSource="{Binding ShellModels.ObservableCollectionLanguage,UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding ShellModels.ItemLanguage,UpdateSourceTrigger=PropertyChanged}"
+                          FontSize="30"
+                          Foreground="Black"
+                          VerticalContentAlignment="Center"
+                          HorizontalContentAlignment="Center">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="SelectionChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding LanguageSelectionCommand,UpdateSourceTrigger=PropertyChanged}"
+                                                           PassEventArgsToCommand="True"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Column="2"
+                  >
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Content="&#xEF2D;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="30"
+                        Foreground="Black"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Cursor="Hand"
+                        Command="{Binding MiniSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="1"
+                        Content="&#xEF2E;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="30"
+                        Foreground="Black"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Cursor="Hand"
+                        Command="{Binding MaxSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="2"
+                        Content="&#xEF2C;"
+                        FontFamily="Segoe MDL2 Assets"
+                        FontSize="30"
+                        Foreground="Black"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Cursor="Hand"
+                        Command="{Binding ExitSystemCommand,UpdateSourceTrigger=PropertyChanged}" />
+
+            </Grid>
         </Grid>
+
+
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.1*" />
@@ -189,7 +214,7 @@
                               ItemsSource="{Binding ShellModels.ObservableCollectionYear,UpdateSourceTrigger=PropertyChanged}"
                               SelectedItem="{Binding ShellModels.ItemYear,UpdateSourceTrigger=PropertyChanged}"
                               FontSize="30"
-                              Foreground="Gray"
+                              Foreground="Black"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center" />
                     <Grid Grid.Row="2">

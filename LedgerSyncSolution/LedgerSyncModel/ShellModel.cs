@@ -41,5 +41,11 @@ namespace LedgerSyncModel
 
         [ObservableProperty]
         private int currentPage;
+
+        [ObservableProperty]
+        private ObservableCollection<string> observableCollectionLanguage = new ObservableCollection<string>();
+
+        [ObservableProperty]
+        private string itemLanguage;
     }
 }

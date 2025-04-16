@@ -38,6 +38,9 @@ namespace LedgerSyncViewModel
             ShellModels.ObservableCollectionYear.Add("2024");
             ShellModels.ObservableCollectionYear.Add("2025");
 
+            ShellModels.ObservableCollectionLanguage.Add("zh-CN");
+            ShellModels.ObservableCollectionLanguage.Add("en-US");
+
             ShellModels.ItemYear = ShellModels.ObservableCollectionYear[ShellModels.ObservableCollectionYear.Count - 1];
             GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
             ShellModels.CurrentPage = 1;
@@ -311,7 +314,11 @@ Month VARCHAR(255) NOT NULL,
 
         #endregion
 
+        [RelayCommand]
+        public void LanguageSelection()
+        {
 
+        }
 
         #region Action
 
