@@ -47,5 +47,8 @@ namespace LedgerSyncModel
 
         [ObservableProperty]
         private string itemLanguage;
+
+        [ObservableProperty]
+        private Visibility waitingVisibility;
     }
 }

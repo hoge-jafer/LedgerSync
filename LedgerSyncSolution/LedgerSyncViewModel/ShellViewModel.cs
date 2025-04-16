@@ -47,6 +47,7 @@ namespace LedgerSyncViewModel
             GlobalTradeListEntities = new ObservableCollection<TradeListEntity>();
             ShellModels.CurrentPage = 1;
             ShellModels.TotalPage = 1;
+            ShellModels.WaitingVisibility = Visibility.Collapsed;
         }
         public SpotAccountTrade tradingAccountTrade;
         public Wallet wallet;
@@ -119,8 +120,9 @@ Month VARCHAR(255) NOT NULL,
             tradingAccountTrade = new SpotAccountTrade(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
             wallet = new Wallet(apiKey: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiKey, apiSecret: Ioc.Default.GetService<SecretKeyViewModel>().SecretKeyModels.ApiSecret);
 
-            ShellModels.ItemLanguage = ShellModels.ObservableCollectionLanguage[1];
+            ShellModels.ItemLanguage = ShellModels.ObservableCollectionLanguage[0];
             LanguageSelection();
+            ShellModels.WaitingVisibility = Visibility.Collapsed;
         }
 
 
@@ -219,6 +221,7 @@ Month VARCHAR(255) NOT NULL,
         {
             //Ioc.Default.GetService<TradeDataViewModel>().Print();
             //Ioc.Default.GetService<ShellViewModel>().ShellModels.ObservableCollectionCoinEntity = TradeDataModels.ObservableCollectionCoinEntity;
+            ShellModels.WaitingVisibility = Visibility.Visible;
             Ioc.Default.GetService<TradeDataViewModel>().SyncData();
         }
         //Analyze

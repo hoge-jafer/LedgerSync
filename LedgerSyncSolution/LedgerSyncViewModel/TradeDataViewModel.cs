@@ -123,6 +123,8 @@ namespace LedgerSyncViewModel
             var priceresult = await Ioc.Default.GetService<ShellViewModel>().tradingAccountTrade.AccountTradeList(symbol);
             if (priceresult == null)
             {
+                MessageBox.Show("Network Error!");
+                Ioc.Default.GetService<ShellViewModel>().ShellModels.WaitingVisibility = Visibility.Collapsed;
                 return;
             }
             List<AccountTradeListResponseModel> exchangeInformationResponseModel = JsonConvert.DeserializeObject<List<AccountTradeListResponseModel>>(priceresult);
@@ -158,7 +160,7 @@ namespace LedgerSyncViewModel
                 ListTradeListEntity.Add(tradeListEntity);
                 TradeDataModels.ObservableCollectionTradeListEntity.Add(tradeListEntity);
             }
-
+            Ioc.Default.GetService<ShellViewModel>().ShellModels.WaitingVisibility = Visibility.Collapsed;
         }
 
         public void Print()
