@@ -317,10 +317,31 @@ Month VARCHAR(255) NOT NULL,
         [RelayCommand]
         public void LanguageSelection()
         {
+            if (ShellModels.ItemLanguage == "zh-CN")
+            {
+                ChangeLanguage("zh-CN");  // 切换到中文
+            }
+            else
+            {
+                ChangeLanguage("en-US");  // 切换到英文
+            }
 
         }
 
         #region Action
+
+        public void ChangeLanguage(string culture)
+        {
+            string dictPath = $"Resources/Strings.{culture}.xaml";
+            var dict = new ResourceDictionary { Source = new Uri(dictPath, UriKind.Relative) };
+
+            // 移除旧的语言字典（假设始终是第一个）
+            var oldDict = Application.Current.Resources.MergedDictionaries[0];
+            Application.Current.Resources.MergedDictionaries.Remove(oldDict);
+
+            // 加入新的
+            Application.Current.Resources.MergedDictionaries.Insert(0, dict);
+        }
 
         public void CreateSecretKey()
         {
