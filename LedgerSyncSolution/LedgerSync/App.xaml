@@ -36,6 +36,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/LedgerSync;component/Style/ButtonDictionary.xaml" />
                 <ResourceDictionary Source="/LedgerSync;component/Style/TextBoxDictionary.xaml" />
+                <!--<ResourceDictionary Source="/LedgerSync;component/Resources/Strings.zh-CN.xaml" />-->
+                <ResourceDictionary Source="/LedgerSync;component/Resources/Strings.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

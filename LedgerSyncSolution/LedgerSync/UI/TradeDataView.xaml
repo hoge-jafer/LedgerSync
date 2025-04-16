@@ -33,7 +33,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
-                    Content="币种"
+                    Content="{DynamicResource Coin}"
                     Style="{StaticResource  ButtonStyleNew}"
                     FontSize="24"
                     Foreground="Black"
@@ -46,7 +46,7 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="1"
-                    Content="类型"
+                    Content="{DynamicResource Type}"
                     Style="{StaticResource  ButtonStyleNew}"
                     FontSize="24"
                     Foreground="Black"
@@ -59,7 +59,7 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="2"
-                    Content="价格"
+                    Content="{DynamicResource Price}"
                     Style="{StaticResource  ButtonStyleNew}"
                     FontSize="24"
                     Foreground="Black"
@@ -72,7 +72,7 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="3"
-                    Content="数量"
+                    Content="{DynamicResource Quantity}"
                     Style="{StaticResource  ButtonStyleNew}"
                     FontSize="24"
                     Foreground="Black"
@@ -85,7 +85,7 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="4"
-                    Content="时间"
+                    Content="{DynamicResource Time}"
                     Style="{StaticResource  ButtonStyleNew}"
                     FontSize="24"
                     Foreground="Black"
