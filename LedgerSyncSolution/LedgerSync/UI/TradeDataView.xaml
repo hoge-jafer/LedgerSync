@@ -33,8 +33,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0"
-                    Content="{DynamicResource Coin}"
+   
                     Style="{StaticResource  ButtonStyleNew}"
+                    Content="{DynamicResource Coin}"
                     FontSize="24"
                     Foreground="Black"
                     Background="Transparent"
@@ -46,8 +47,9 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="1"
-                    Content="{DynamicResource Type}"
+
                     Style="{StaticResource  ButtonStyleNew}"
+                    Content="{DynamicResource Type}"
                     FontSize="24"
                     Foreground="Black"
                     Background="Transparent"
@@ -59,8 +61,9 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="2"
-                    Content="{DynamicResource Price}"
+
                     Style="{StaticResource  ButtonStyleNew}"
+                    Content="{DynamicResource Price}"
                     FontSize="24"
                     Foreground="Black"
                     Background="Transparent"
@@ -72,8 +75,9 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="3"
-                    Content="{DynamicResource Quantity}"
+
                     Style="{StaticResource  ButtonStyleNew}"
+                    Content="{DynamicResource Quantity}"
                     FontSize="24"
                     Foreground="Black"
                     Background="Transparent"
@@ -85,8 +89,9 @@
                     VerticalContentAlignment="Center"
                     Cursor="Hand" />
             <Button Grid.Column="4"
-                    Content="{DynamicResource Time}"
+  
                     Style="{StaticResource  ButtonStyleNew}"
+                    Content="{DynamicResource Time}"
                     FontSize="24"
                     Foreground="Black"
                     Background="Transparent"
