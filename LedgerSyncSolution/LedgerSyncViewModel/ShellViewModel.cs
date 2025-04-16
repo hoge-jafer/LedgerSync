@@ -319,11 +319,13 @@ Month VARCHAR(255) NOT NULL,
         {
             if (ShellModels.ItemLanguage == "zh-CN")
             {
-                ChangeLanguage("zh-CN");  // 切换到中文
+                //ChangeLanguage("zh-CN");  // 切换到中文
+                SwitchLanguage("zh-CN");
             }
             else
             {
-                ChangeLanguage("en-US");  // 切换到英文
+                //ChangeLanguage("en-US");  // 切换到英文
+                SwitchLanguage("en-US");
             }
 
         }
@@ -332,7 +334,7 @@ Month VARCHAR(255) NOT NULL,
 
         public void ChangeLanguage(string culture)
         {
-            string dictPath = $"Resources/Strings.{culture}.xaml";
+            string dictPath = $"/LedgerSync;component/Resources/Strings.{culture}.xaml";
             var dict = new ResourceDictionary { Source = new Uri(dictPath, UriKind.Relative) };
 
             // 移除旧的语言字典（假设始终是第一个）
@@ -341,6 +343,19 @@ Month VARCHAR(255) NOT NULL,
 
             // 加入新的
             Application.Current.Resources.MergedDictionaries.Insert(0, dict);
+        }
+
+        public void SwitchLanguage(string culture)
+        {
+            List<ResourceDictionary> dictionaryList = new List<ResourceDictionary>();
+            foreach (ResourceDictionary dictionary in Application.Current.Resources.MergedDictionaries)
+            {
+                dictionaryList.Add(dictionary);
+            }
+            string requestedCulture = culture == "en-US" ? "/LedgerSync;component/Resources/Strings.en-US.xaml" : "/LedgerSync;component/Resources/Strings.zh-CN.xaml";
+            ResourceDictionary resourceDictionary = dictionaryList.FirstOrDefault(d => d.Source.OriginalString.Equals(requestedCulture));
+            Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
 
         public void CreateSecretKey()
