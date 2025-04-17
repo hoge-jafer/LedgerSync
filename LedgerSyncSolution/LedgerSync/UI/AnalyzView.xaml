@@ -18,6 +18,6 @@
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
     <Grid>
-        
+        <oxy:PlotView Model="{Binding PlotModel}" />
     </Grid>
 </Page>
