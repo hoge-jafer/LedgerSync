@@ -48,6 +48,7 @@ namespace LedgerSync
             services.AddSingleton<ShellViewModel>();
             services.AddSingleton<MenuViewModel>();
             services.AddSingleton<SecretKeyViewModel>();
+            services.AddSingleton<AnalyzeViewModel>();
             services.AddSingleton<TradeDataViewModel>();
             services.BuildServiceProvider();
             return services.BuildServiceProvider();
