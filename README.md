@@ -38,7 +38,7 @@
 | 功能模块        | 技术亮点                          | 可视化示例                     |
 |-----------------|-----------------------------------|--------------------------------|
 | **数据清洗**    | 自动排除交易所异常数据（如刷量）  | ![数据清洗](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu2.png) |
-| **策略回测**    | 支持C#脚本扩展自定义指标      | ![回测界面](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu.png) |
+| **策略回测**    | 支持C#脚本扩展自定义指标      | ![回测界面](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/12.png) |
 | **跨平台同步**  | 端到端加密同步交易日志            | ![同步流程](https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/Menu.png)  |
 
 ---
