@@ -51,3 +51,15 @@ graph LR
   D[分析引擎] --> E[回测模块]
   G[前端] --> H[Windows WPF]
   G --> I[移动端 MAUI]
+```
+
+
+
+## ❤️ Support Me
+If you find this project helpful, consider supporting me via crypto:
+ 
+- **Ethereum (ETH)**: `0x9D9022767D72Faf829E0015A9b0c288C5901DC8C`  
+- **Ltccoin (LTC)**: `LYmte1G1sHyEm66mdCkXpZzuRaLjNoGspe`  
+- **Avalanche (AVAX)**: `0x9D9022767D72Faf829E0015A9b0c288C5901DC8C`  
+    
+
