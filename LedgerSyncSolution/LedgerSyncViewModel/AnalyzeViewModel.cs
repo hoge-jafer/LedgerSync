@@ -67,7 +67,7 @@ namespace LedgerSyncViewModel
 
             model.Series.Add(series);
 
-            return model;
+            //return model;
         }
     }
 }
