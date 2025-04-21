@@ -7,11 +7,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <Platforms>AnyCPU;x64</Platforms>
-    <ApplicationIcon>无标题.ico</ApplicationIcon>
+    <ApplicationIcon>newlogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="无标题.ico" />
+    <Content Include="newlogo.ico" />
   </ItemGroup>
 
   <ItemGroup>
