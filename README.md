@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/logo.png" width="200" alt="LedgerSync Logo">
+  <img src="https://github.com/hoge-jafer/LedgerSync/blob/main/LedgerSyncSolution/LedgerSync/Picture/newlogo.png" width="200" alt="LedgerSync Logo">
 </p >
 
 <h1 align="center">LedgerSync 📊</h1>
